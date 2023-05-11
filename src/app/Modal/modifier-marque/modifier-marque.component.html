@@ -1,0 +1,38 @@
+
+<div class="container-fluid">
+  
+    <div  style="background-color: rgb(236, 237, 237);height: 100px;">
+      <h1  class="title" style="font-size: xx-large;width: 400px; ">  Modifier  Marque</h1>
+      </div>
+      <div style="border-bottom:1px solid  #bb0502;width: 21cm;margin-bottom: 10px;" >
+      </div>
+    <form  [formGroup]="MarqueForm" >
+    
+      <div class="row">
+       
+        <label class="col-sm- " for="input2" style="margin-left: 20px;width: 210px;margin-top: 10px;"> Marque </label>
+        <input type="text"  class="form-control" width="250px" formControlName="marque" style="margin-left: 20px;width: 210px;font-size: medium"  id="marque" name="marque" [(ngModel)]="marque.marque">
+      
+       
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-4"><span class="  validation-error" style="margin-left: 0px;" *ngIf="(formSubmitted) && MarqueForm.controls.marque.errors?.required">vous devez remplir le champ</span></div>
+        
+        
+      </div>
+      </div>
+      <div><br><br></div>
+
+      
+      
+        
+    </form>
+    <div   class=" d-flex align-items-end justify-content-end"
+    style="border-top:1px solid  #bb0502;margin-top: 10px;">
+      <Button class="btn btn-lg" style="color: white;background: linear-gradient(to bottom,#FB404B 0%,#bb0502 100%);margin-top: 10px;width: 100px;height: 40px;font-size: medium;" (click)="ModefierMarque()"  > Modifier </Button>
+      <Button class="btn btn-lg" style="margin-top: 10px;color: white; margin-left: 10px;background: linear-gradient(to bottom,#FB404B 0%,#bb0502 100%);width: 100px;height: 40px;font-size: medium;" (click)="closedialog()"> Fermer </Button>
+    </div>
+    </div>
+    

@@ -1,0 +1,124 @@
+<!-- <div style="  background: linear-gradient(to bottom,#FB404B 0%,#bb0502 100%);padding-top: 0%;margin-bottom: 10px;height: 80px;">
+  <h1 class="title" style="font-size: xx-large;width: 400px;color: white; margin-top: 0px;
+  ">  Ajouter  Vehicules</h1>
+
+</div> -->
+<div class="container-fluid">
+    <div style="background-color: rgb(236, 237, 237);height: 100px;">
+      <h1 class="title"  style="font-size: xx-large;width: 400px;">Modifier  Véhicules </h1>
+    </div>
+    <div style="border-bottom:1px solid  #bb0502;width: 20cm;margin-bottom: 10px;" >
+      
+    </div>
+  <form [formGroup]="loginForm" >
+  
+    <div class="row-container">
+      <label class="col-sm-4" for="input1" style="width: 110px;"> type </label>
+     
+      <select class="form-select" formControlName="typeVehicule" [(ngModel)]="FicheMarque.typeVehicule.id" name="typeVehicule" style="width: 200px;height: 40px;color: black;font-size: medium;"  (change)="typevehicule($event)"
+      id="typeVehicule" value="fiche"     placeholder="">
+        <option selected disabled> Type </option>
+        <option class="ecrituerModal"  *ngFor="let typevehicule of listtypevehicule" [value]="typevehicule.id"  >  
+          {{typevehicule.type}}
+                                  
+        </option>
+        <!-- <option class="ecrituerModal" >  Camion </option>
+        <option class="ecrituerModal" > Pickup </option>
+        <option class="ecrituerModal" > voiture </option> -->
+      </select>  
+      <label class="col-sm-4 " for="input2" style="margin-left: 20px;width: 110px;"> Matricule </label>
+      <input type="text"  class="form-control" formControlName="matricule"  id="vehicule" name="vehicule" style="width: 200px;font-size: medium;"[(ngModel)]="FicheMarque.matricule"   >
+    
+     
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-2 "> </div>
+        <div class="col-md-4" style="margin-left: 40px;"><span class="  validation-error" style="margin-right: 0px;" *ngIf="(formSubmitted) && loginForm.controls.typeVehicule.errors?.required">vous devez remplir le champ</span></div>
+       
+       
+      <div class="col-sm-4" style="margin-left: 8px;"> <span class="  validation-error" *ngIf="(formSubmitted) && loginForm.controls.matricule.errors?.required">vous devez remplir le champ</span></div>
+      
+    </div> </div>
+    <div><br><br></div>
+    <div class="row-container">
+      <label class="col-sm-4" for="input4"  style="width: 110px;">Marque</label>
+    
+      <select class="form-select" name="marq"  style="width: 205px;height: 40px;color: black;font-size: medium;"
+      id="marques" value="fiche" [(ngModel)]="FicheMarque.marques.id"  formControlName="marques"   placeholder=""  (change)="marqueChange($event)" >
+        <option selected disabled>Choisie Marque</option>
+        <option class="ecrituerModal"  *ngFor="let listmarque of listMarque" [value]="listmarque.id"  >  
+          {{listmarque.marque}}
+                                  
+        </option>
+      </select>  
+    
+      <label class="col-sm-4 " for="input5" style="margin-left: 20px;width: 110px;" >Statut</label>
+      <select class="form-select" name="statut" style="width: 200px;height: 40px;color: black;font-size: medium;"
+      id="statut" value="fiche"  formControlName="statut"    placeholder=""  [(ngModel)]="FicheMarque.statut">
+        <option selected disabled> Statut </option>
+        <option class="ecrituerModal" >  Disponible </option>
+        <option class="ecrituerModal" > Hors Service </option>
+        <option class="ecrituerModal" >  En Mission </option>
+      </select>  
+     
+      
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-2 "> </div>
+        <div class="col-md-4" style="margin-left: 40px;"><span class="  validation-error" style="margin-right: 0px;" *ngIf="(formSubmitted) && loginForm.controls.marques.errors?.required">vous devez remplir le champ</span></div>
+       
+       
+      <div class="col-sm-4" style="margin-left: 12px;"> <span class="  validation-error" *ngIf="(formSubmitted) && loginForm.controls.statut.errors?.required">vous devez remplir le champ</span></div>
+      
+    </div> </div>
+    <div><br><br></div>
+    <div class="row-container">
+      <label class="col-sm-4" for="input4"  style="width: 110px;">Ancien Km</label>
+      <input type="text" class="form-control"  formControlName="ancienKm"   id="ancienKm" name="ancienKm" style="width: 200px;font-size: medium;"
+      [(ngModel)]="FicheMarque.ancienKm">
+    
+      <label class="col-sm-4 " for="input5"style="margin-left: 20px;width: 110px;">Nouveau Km</label>
+      <input type="text"  class="form-control" formControlName="nouveauKm"  id="nouveauKm" name="nouveauKm" style="width: 200px;font-size: medium;"
+      [(ngModel)]="FicheMarque.nouveauKm">
+    
+      
+    </div>
+    <div class="row-container">
+      <label class="col-sm-4"  style="width: 100px;margin-left: 196px; color: red;" ></label>
+      <p style="color: red;"> {{ message }}</p>
+     </div>
+      
+     <div class="container">
+      <div class="row">
+        <div class="col-sm-2 "> </div>
+        <div class="col-md-4" style="margin-left: 40px;"><span class="  validation-error" style="margin-right: 0px;" *ngIf="(formSubmitted) && loginForm.controls.ancienKm.errors?.required">vous devez remplir le champ</span></div>
+       
+       
+      <div class="col-sm-4" style="margin-left: 14px;"> <span class="  validation-error" *ngIf="(formSubmitted) && loginForm.controls.nouveauKm.errors?.required">vous devez remplir le champ</span></div>
+      
+    </div> </div>
+    <div><br><br></div>
+    <div class="row-container">
+      <label class="col-sm-4" for="input4" style="width: 110px;">Designation</label>
+      <textarea  cols="5" rows="3" type="text" class="form-control" formControlName="designation" id="designation" name="designation"  style="font-size: medium;" [(ngModel)]="FicheMarque.designation" > </textarea>
+    
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4"><span class="  validation-error" style="margin-right: 10px;" *ngIf="(formSubmitted) && loginForm.controls.designation.errors?.required">vous devez remplir le champ</span></div>
+      
+      
+    </div>
+    </div>
+  </form>
+  <div   class=" d-flex align-items-end justify-content-end"
+  style="border-top:1px solid  #bb0502;margin-top: 10px;">
+    <Button class="btn btn-lg" style="color: white;background: linear-gradient(to bottom,#FB404B 0%,#bb0502 100%);margin-top: 10px;width: 100px;height: 40px;font-size: medium;" (click)="compareNumbers()"> Modifier </Button>
+    <Button class="btn btn-lg" style="margin-top: 10px;color: white; margin-left: 10px;background: linear-gradient(to bottom,#FB404B 0%,#bb0502 100%);width: 100px;height: 40px;font-size: medium;" (click)="closedialog()"> Fermer </Button>
+  
+  
+  </div>
+  </div>

@@ -1,0 +1,258 @@
+
+<div class="container-fluid" style="border: 2px solid darkred;">
+
+
+    <div class="title" style="background-color: rgb(236, 237, 237);height: 100px;">
+    <h1 style="font-size: xx-large; ">Ajouter Livraisons  </h1>
+  </div>
+  <div style="border-bottom:1px solid  #bb0502;width: 30cm;" >
+  </div>
+  <div><br></div>
+<form [formGroup]="loginForm" >
+
+  <div class="row-container">
+
+
+    <label class="col-sm-4  " for="input3"style="width: 160px;" >Lieu Charge</label>
+
+    <select class="form-select" name="lieucharge"  style="width: 275px;height: 40px;color: black;font-size: medium;"
+    id="lieucharge" value="fiche" [(ngModel)]="FicheLivraison.lieucharge.id"  formControlName="lieucharge"   placeholder=""  (change)="typelieuxChargeChange($event)" >
+      <option selected disabled>Lieu de livraison</option>
+      <option class="ecrituerModal"  *ngFor="let listlieux of listlieux" [value]="listlieux.id"  >
+        {{listlieux.designation}}
+
+      </option>
+    </select>
+    <label  class="col-sm-4" for="input6" style="width: 160px;" >Lieu de Livraison</label>
+    <select class="form-select" name="lieux"  style="width: 275px;height: 40px;color: black;font-size: medium;"
+    id="lieux" value="fiche" [(ngModel)]="FicheLivraison.lieuxlivraison.id"  formControlName="lieuxlivraison"   placeholder=""  (change)="lieuxlivraisonChange($event)" >
+      <option selected disabled>Lieu de livraison</option>
+      <option class="ecrituerModal"  *ngFor="let listlieu of listlieuxlivraison" [value]="listlieu.id"  >
+        {{listlieu.designation}}
+
+      </option>
+    </select>
+    <label  class="col-sm-4" for="input6" style="width: 160px;" >Responsable Chargement</label>
+
+    <select class="form-select" name="responsableCharge" formControlName="responsableCharge" style="width: 275px;height: 40px;color: black;font-size: medium;" id="responsableCharge" [(ngModel)]="FicheLivraison.responsableCharge.id"     placeholder=""(click)="responsablechange($event)" >
+      <option selected disabled> Responsable </option>
+      <option class="ecrituerModal"  *ngFor="let listResponsable of listResponsables" [value]="listResponsable.id"  >
+        {{listResponsable.nom}} {{listResponsable.prenom}}
+
+      </option>
+    </select>
+  </div>
+ <div class="container">
+    <div class="row">
+      <div class="col-sm-6 "> <strong *ngIf="Messagelieux" style="color:red;margin-left: 183px;" > Lieu de Charge doit être différence </strong></div>
+      <div class="col-sm-4"> <span class="  validation-error" style="margin-left: 170px;" *ngIf="(formSubmitted) && loginForm.controls.datePrevuCharge.errors?.required"></span></div>
+
+
+  </div>
+</div>
+
+  <div><br><br></div>
+  <div class="row-container">
+    <label class="col-sm-4 " for="input6" style="width: 160px;" >Date Demande</label>
+
+    <input type="datetime-local"  class="form-control" id="dateDemande"  style="width: 275px;color: black;font-size: medium;"name="dateDemande" formControlName="dateDemande" [(ngModel)]="FicheLivraison.dateDemande" (ngModelChange)="checkDates()"  >
+
+    <label class="col-sm-4" for="input2" style="width: 160px;">Date Prevu Charge</label>
+    <input type="datetime-local"  class=" form-control"  formControlName="datePrevuCharge"  id="datePrevuCharge" style="width: 275px ;color: black;font-size: medium;" name="datePrevuCharge" [(ngModel)]="FicheLivraison.datePrevuCharge"  [min]="FicheLivraison.dateDemande"   [max]="FicheLivraison.dateLivraison" (ngModelChange)="checkDates2()" >
+
+
+
+   <label class="col-sm-4" for="input5" style="width: 160px;">Date Livraison</label>
+    <input type="datetime-local"  class="form-control" id="dateLivraison"  style="width: 275px;color: black;font-size: medium;"name="dateLivraison" formControlName="dateLivraison"  [(ngModel)]="FicheLivraison.dateLivraison" [min]="FicheLivraison.dateDemande"  >
+
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4"><span class="  validation-error" style="margin-left: 170px;" *ngIf="(formSubmitted) && loginForm.controls.dateDemande.errors?.required">vous devez remplir le champ</span></div>
+      <div class="col-sm-4"> <span class="  validation-error" style="margin-left: 220px;" *ngIf="(formSubmitted) && loginForm.controls.datePrevuCharge.errors?.required">vous devez remplir le champ</span></div>
+
+    <div class="col-sm-4"> <span class="  validation-error" style="margin-left: 220px;" *ngIf="(formSubmitted) && loginForm.controls.dateLivraison.errors?.required">vous devez remplir le champ</span></div>
+
+  </div>
+</div>
+
+ <!--
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4"><span class="  validation-error" style="margin-left: 170px;" *ngIf="(formSubmitted) && loginForm.controls.heureLivraison.errors?.required">vous devez remplir le champ</span></div>
+      <div class="col-sm-4"> <span class="  validation-error" style="margin-left: 220px;" *ngIf="(formSubmitted) && loginForm.controls.dateLivraison.errors?.required">vous devez remplir le champ</span></div>
+
+    <div class="col-sm-4"> <span class="  validation-error" style="margin-left: 220px;" *ngIf="(formSubmitted) && loginForm.controls.heureDemande.errors?.required">vous devez remplir le champ</span></div>
+
+  </div>
+</div> -->
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-sm-6" *ngIf="Message">
+      <label class="col-sm-6"><Strong style="color: red;margin-left: 150px;">Heure de livraison n'a pas été respectée </Strong></label>
+      </div>
+      <div class="col-sm-4"> <Strong style="margin-left: 0px;color: red;" *ngIf="MessageDate">La date de livraison n'a pas été respectée </Strong></div>
+
+
+</div>
+</div> -->
+  <div><br><br></div>
+  <div class="row-container">
+    <label class="col-sm-4" for="input4" style="width: 160px;">Quantité</label>
+    <input type="number" class="form-control" style="width: 275px;color: black;font-size: medium;" id="quantite" name="quantite"
+    formControlName="quantite"   [(ngModel)]="FicheLivraison.quantite">
+
+    <label class="col-sm-4" for="input5" style="width: 160px;"> Note </label>
+    <textarea type="text" cols="10" rows="2" class="form-control" style="width: 275px;color: black;font-size: medium;" id="note" name="note" formControlName="note"  [(ngModel)]="FicheLivraison.note"></textarea>
+
+
+    <!-- <input type="text"  class="form-control" id="unite" name="unite" style="width: 275px;color: black;font-size: medium;"
+    formControlName="unite"  [(ngModel)]="FicheLivraison.unite" > -->
+    <label class="col-sm-4" for="input6" style="width: 160px;">Unité</label>
+    <select class="form-select" name="unite" formControlName="unite" style="width: 275px;height: 40px;color: black;font-size: medium;" id="unite" [(ngModel)]="FicheLivraison.unite"     placeholder="" >
+      <option selected disabled> Unité </option>
+      <option class="ecrituerModal" >  J </option>
+      <option class="ecrituerModal" > T  </option>
+      <option class="ecrituerModal" > PC  </option>
+      <option class="ecrituerModal" >   BAR  </option>
+      <option class="ecrituerModal" >   JEU  </option>
+      <option class="ecrituerModal" >   TOL  </option>
+      <option class="ecrituerModal" >  M3 </option>
+      <option class="ecrituerModal" > SAC  </option>
+      <option class="ecrituerModal" > M2  </option>
+      <option class="ecrituerModal" >  MO  </option>
+      <option class="ecrituerModal" >  L  </option>
+      <option class="ecrituerModal" >   MT  </option>
+      <option class="ecrituerModal" >  PR </option>
+      <option class="ecrituerModal" > U  </option>
+      <option class="ecrituerModal" > EN  </option>
+      <option class="ecrituerModal" >   ENS  </option>
+      <option class="ecrituerModal" >  HR  </option>
+      <option class="ecrituerModal" >   UN  </option>
+      <option class="ecrituerModal" >  R </option>
+      <option class="ecrituerModal" > FT  </option>
+      <option class="ecrituerModal" > RLX  </option>
+      <option class="ecrituerModal" >  KG  </option>
+      <option class="ecrituerModal" >   ML  </option>
+      <option class="ecrituerModal" >   B  </option>
+    </select>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4"><span class="  validation-error" style="margin-left: 170px;" *ngIf="(formSubmitted) && loginForm.controls.quantite.errors?.required">vous devez remplir le champ</span></div>
+      <div class="col-sm-4"> <span class="  validation-error" style="margin-left: 220px;" *ngIf="(formSubmitted) && loginForm.controls.note.errors?.required">vous devez remplir le champ</span></div>
+
+    <div class="col-sm-4"> <span class="  validation-error" style="margin-left: 220px;" *ngIf="(formSubmitted) && loginForm.controls.unite.errors?.required">vous devez remplir le champ</span></div>
+
+  </div>
+</div>
+
+  <div><br><br></div>
+  <div class="row-container">
+
+
+    <label class="col-sm-4" for="input4" style="width: 160px;"> Designation </label>
+    <textarea type="text"cols="4" rows="2"    class="form-control" id="designation" name="designation" style="width: 753px;color: black;font-size: medium;" formControlName="designation" [(ngModel)]="FicheLivraison.designation" ></textarea>
+    <label class="col-sm-4 " for="input5" style="width: 160px;" >Statut</label>
+    <select class="form-select" name="statut" style="width: 275px;height: 40px;color: black;font-size: medium;"
+    id="statut" value="FicheLivraison.statut" [(ngModel)]="FicheLivraison.statut" formControlName="statut"    placeholder="" >
+      <option selected disabled> Statut </option>
+      <option class="ecrituerModal" >  Brouillon </option>
+      <option class="ecrituerModal" > Envoyée  </option>
+      <option class="ecrituerModal" > Rejetée  </option>
+      <option class="ecrituerModal" >   En cours  </option>
+      <option class="ecrituerModal" >   Traitée  </option>
+      <option class="ecrituerModal" >   Terminée  </option>
+    </select>
+
+  </div>
+
+
+   <div class="container">
+    <div class="row">
+      <div class="col-sm-4"><span class="  validation-error" style="margin-left: 170px;" *ngIf="(formSubmitted) && loginForm.controls.designation.errors?.required">vous devez remplir le champ</span></div>
+      <div class="col-sm-4"><span class="  validation-error" style="margin-left: 170px;" *ngIf="(formSubmitted) && loginForm.controls.designation.errors?.required"></span></div>
+
+    <div class="col-sm-4"> <span class="  validation-error" style="margin-left: 220px;" *ngIf="(formSubmitted) && loginForm.controls.statut.errors?.required">vous devez remplir le champ</span></div>
+
+  </div>
+</div>
+  <div><br><br></div>
+  <div class="row-container">
+    <label  class="col-sm-4" for="input4" style="width: 160px;" >Type Vehicule</label>
+
+    <select class="form-select" name="typeVehicule"  style="width: 275px;height: 40px;color: black;font-size: medium;"
+    id="typeVehicule" value="fiche" [(ngModel)]="FicheLivraison.typeVehicule.id"  formControlName="typeVehicule"   placeholder=""  (change)="typevehiculesChange($event)" >
+      <option selected disabled>Choisie Vehicule</option>
+      <option class="ecrituerModal"  *ngFor="let listvehicules of listtypevehicule" [value]="listvehicules.id"  >
+        {{listvehicules.type}}
+
+      </option>
+    </select>
+    <label  class="col-sm-4" for="input4" style="width: 160px;" > Vehicule</label>
+
+    <select class="form-select" name="vehicule"  style="width: 275px;height: 40px;color: black;font-size: medium;"
+    id="vehicule" value="fiche" [(ngModel)]="FicheLivraison.vehicule.id"  formControlName="vehicule"   placeholder=""  (change)="vehiculesChange($event)" >
+      <option selected disabled>Choisie Vehicule</option>
+      <option class="ecrituerModal"  *ngFor="let listvehicules of listvehiculeBytypeId" [value]="listvehicules.id"  >
+        {{listvehicules.designation}}
+
+      </option>
+    </select>
+
+    <label  class="col-sm-4" for="input5" style="width: 160px;">Chauffeur</label>
+
+    <select class=" form-select  " name="chauffeur"   style="width: 275px;height: 40px;color: black;font-size: medium;"
+    id="chauffeur" value="fiche" formControlName="chauffeur"  (change)="ChauffeurChange($event)"    placeholder="" [(ngModel)]="FicheLivraison.chauffeur.id" >
+      <option selected disabled>Choisie Chauffeur</option>
+      <option class="ecrituerModal"  *ngFor="let listchaufeurs of listchaufeur" [value]="listchaufeurs.id"  >
+        {{listchaufeurs.nom}} {{listchaufeurs.prenom}}
+
+      </option>
+    </select>
+
+    <!-- <label  class="col-sm-4" for="input6" style="width: 160px;" >Lieu de Livraison</label>
+    <select class="form-select" name="lieux"  style="width: 275px;height: 40px;color: black;font-size: medium;"
+    id="lieux" value="fiche" [(ngModel)]="FicheLivraison.lieux.id"  formControlName="lieux"   placeholder=""  (change)="lieuxChange($event)" >
+      <option selected disabled>Lieu de livraison</option>
+      <option class="ecrituerModal"  *ngFor="let listlieux of listlieux" [value]="listlieux.id"  >
+        {{listlieux.designation}}
+
+      </option>
+    </select>  -->
+
+
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4"><span *ngIf="Messagevehicule" >vous devez remplir le champ</span></div>
+      <div class="col-sm-4"> <span class="  validation-error" style="margin-left: 220px;" *ngIf="(formSubmitted) && loginForm.controls.chauffeur.errors?.required">vous devez remplir le champ</span></div>
+
+    <div class="col-sm-4"> <span class="  validation-error" style="margin-left: 220px;" *ngIf="(formSubmitted) && loginForm.controls.lieux.errors?.required">vous devez remplir le champ</span></div>
+
+  </div>
+</div>
+
+  <div><br><br></div>
+  <div class="row">
+
+    <label  class="" for="input4" style="width: 100px;margin-left: 30px;margin-right: 30px;" > Piece jointe</label>
+  <div class="card" style="width: 400px;margin-left: 70px;">
+    <input type="file"  (change)="onFileSelected($event)">
+  </div>
+</div>
+
+
+</form>
+<div><br></div>
+<div   class=" d-flex align-items-end justify-content-end"
+style="border-top:1px solid  #bb0502;margin-top: 10px;">
+  <Button class="btn btn-lg" style="color:white;background: linear-gradient(to bottom,#FB404B 0%,#bb0502 100%);margin-top: 10px;width: 100px;height: 40px;font-size: medium;" (click)="controlExecutionTimeReport()" (click)="onUploadfile()" > Ajouter </Button>
+  <Button class="btn btn-lg" style="margin-top: 10px;color: white; margin-left: 10px;background: linear-gradient(to bottom,#FB404B 0%,#bb0502 100%);width: 100px;height: 40px;font-size: medium;" (click)="closedialog()"> Fermer </Button>
+
+
+</div>
+ <div><br></div>
+</div>

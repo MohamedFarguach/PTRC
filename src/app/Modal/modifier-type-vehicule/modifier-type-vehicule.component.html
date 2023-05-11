@@ -1,0 +1,39 @@
+
+<div class="container-fluid">
+  
+    <div  style="background-color: rgb(236, 237, 237);height: 100px;">
+      <h1  class="title" style="font-size: xx-large;width: 500px; ">  Modifier Type de Vehicule</h1>
+      </div>
+      <div style="border-bottom:1px solid  #bb0502;width: 21cm;margin-bottom: 10px;" >
+      </div>
+    <form  [formGroup]="FormTypeVehicule" >
+    
+      <div class="row">
+       
+        <label class="col-sm- " for="input2" style="margin-left: 20px;width: 210px;margin-top: 10px;"> Type </label>
+        <input type="text"  class="form-control" width="250px" formControlName="type" style="margin-left: 20px;width: 210px;font-size: medium"  id="type" name="type" [(ngModel)]="TypeVehicule.type" required>
+        
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-4"><span class="  validation-error" style="margin-right: 10px;" *ngIf="(formSubmitted) && FormTypeVehicule.controls.type.errors?.required">vous devez remplir le champ</span></div>
+        
+        
+      </div>
+      </div>
+      <div><br><br></div>
+
+      
+      
+        
+    </form>
+    <div   class=" d-flex align-items-end justify-content-end"
+    style="border-top:1px solid  #bb0502;margin-top: 10px;">
+      <Button class="btn btn-lg" style="color: white;background: linear-gradient(to bottom,#FB404B 0%,#bb0502 100%);margin-top: 10px;width: 100px;height: 40px;font-size: medium;" (click)="Modefierlisttypevehicule()"  > Modifier </Button>
+      <Button class="btn btn-lg" style="margin-top: 10px;color: white; margin-left: 10px;background: linear-gradient(to bottom,#FB404B 0%,#bb0502 100%);width: 100px;height: 40px;font-size: medium;" (click)="closedialog()"> Fermer </Button>
+    
+    
+    </div>
+    </div>
+    

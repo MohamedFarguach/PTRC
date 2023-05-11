@@ -1,0 +1,94 @@
+<!-- <div style="  background: linear-gradient(to bottom,#FB404B 0%,#bb0502 100%);padding-top: 0%;margin-bottom: 10px;height: 80px;">
+  <h1 class="title" style="font-size: xx-large;width: 400px;color: white; margin-top: 0px;
+  ">  Ajouter  Vehicules</h1>
+
+</div> -->
+<div class="container-fluid">
+    <div style="background-color: rgb(236, 237, 237);height: 100px;">
+      <h1 class="title"  style="font-size: xx-large;width: 400px;">Ajouter  Lieux </h1>
+    </div>
+    <div style="border-bottom:1px solid  #bb0502;width: 20cm;margin-bottom: 10px;" >
+      
+    </div>
+  <form [formGroup]="LieuxForm" >
+  
+    <div class="row-container">
+      <label class="col-sm-4" for="input1" style="width: 110px;"> Code </label>
+      <input type="text" class="form-control" formControlName="code"  id="code" name="code"  style="width: 200px;font-size: medium;"
+      [(ngModel)]="FicheLieux.code" >
+    
+      <label class="col-sm-4 " for="input2" style="margin-left: 20px;width: 110px;"> Adresse </label>
+      <input type="text"  class="form-control" formControlName="adresse"  id="adresse" name="adresse" style="width: 200px;font-size: medium;"[(ngModel)]="FicheLieux.adresse" >
+    
+     
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-2 "> </div>
+        <div class="col-md-4" style="margin-left: 40px;"><span class="  validation-error" style="margin-right: 0px;" *ngIf="(formSubmitted) && LieuxForm.controls.code.errors?.required">vous devez remplir le champ</span></div>
+       
+       
+      <div class="col-sm-4" style="margin-left: 85px;"> <span class="  validation-error" *ngIf="(formSubmitted) && LieuxForm.controls.adresse.errors?.required">vous devez remplir le champ</span></div>
+      
+    </div>
+  </div>
+    <div><br><br></div>
+    <div class="row-container">
+      <label class="col-sm-4" for="input4"  style="width: 110px;">Type</label>
+    
+     
+      <select class="form-select" name="typelieux"  style="width: 205px;height: 40px;color: black;font-size: medium;"
+      id="typelieux" value="fiche" [(ngModel)]="FicheLieux.typelieux.id"  formControlName="typelieux"   placeholder=""  (change)="TypelieuxChange($event)" >
+        <option selected disabled>Choisie Lieux</option>
+        <option class="ecrituerModal"  *ngFor="let listTypeLieu of list" [value]="listTypeLieu.id"  >  
+          {{listTypeLieu.designation}}
+                                  
+        </option>
+      </select>  
+    
+      <label class="col-sm-4 " for="input5" style="margin-left: 20px;width: 110px;" >Statut</label>
+      <select class="form-select" name="statut" style="width: 200px;height: 40px;color: black;font-size: medium;"
+      id="statut" value="fiche"  formControlName="statut"    placeholder=""  [(ngModel)]="FicheLieux.statut">
+        <option selected disabled> Statut </option>
+        <option class="ecrituerModal" >  Actif </option>
+        <option class="ecrituerModal" > InActif </option>
+       
+      </select>  
+     
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class=""> </div>
+        <div class="col-xl-6" ></div>
+       
+       
+      <div class="col-xl-6"  > <span class="  validation-error" style="margin-left: 89px;" *ngIf="(formSubmitted) && LieuxForm.controls.statut.errors?.required">vous devez remplir le champ statut</span></div>
+      
+    </div>
+  </div>
+    <div><br><br></div>
+    <div class="row-container">
+      <label class="col-sm-4" for="input4"  style="width: 110px;">designation</label>
+      <textarea type="text" class="form-control"  formControlName="designation"   id="designation" name="designation" style="font-size: medium;" cols="20" rows="5"
+      [(ngModel)]="FicheLieux.designation"> </textarea>
+    
+    </div>
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4 "> </div>
+        <div class="col-md-4" style="margin-left: 40px;"><span class="  validation-error" style="margin-right: 0px;" *ngIf="(formSubmitted) && LieuxForm.controls.designation.errors?.required">vous devez remplir le champ</span></div>
+       
+       
+    </div>
+  </div>
+  </form>
+  
+  <div   class=" d-flex align-items-end justify-content-end"
+  style="border-top:1px solid  #bb0502;margin-top: 10px;">
+    <Button class="btn btn-lg" style="color: white;background: linear-gradient(to bottom,#FB404B 0%,#bb0502 100%);margin-top: 10px;width: 100px;height: 40px;font-size: medium;" (click)="RegisterlistFicheLieux()"> Ajouter </Button>
+    <Button class="btn btn-lg" style="margin-top: 10px;color: white; margin-left: 10px;background: linear-gradient(to bottom,#FB404B 0%,#bb0502 100%);width: 100px;height: 40px;font-size: medium;" (click)="closedialog()"> Fermer </Button>
+  
+  
+  </div>
+  </div>

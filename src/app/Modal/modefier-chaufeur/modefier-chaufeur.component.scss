@@ -1,0 +1,51 @@
+.row-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  label {
+    margin-right: 50px;
+    width: 280px;
+    margin-left: 3px;
+    
+  }
+  .validation-error{
+    color:red
+   }
+  .title h1:before {
+    left:-20px;
+
+ }
+ .title h1:after {
+    right:-20px;
+ }
+ /* ------- Helper Styles -------------*/
+ h1{
+  font-size: 70px;
+  font-weight: 600;
+  background-image:  linear-gradient(to right, #553c9a 45%, #ee4b2b);
+ 
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+ }
+ .title{
+   position: relative;
+   text-align: center;
+   width: 90%;
+   max-width: 500px;
+   padding: 1em;
+   margin:  auto;
+   
+   margin-top: 0%;
+ }
+ .Ajoute{
+  // position: relative;
+ text-align: end;
+  width: 100%;
+  //max-width: 200px;
+  padding: 1em;
+  margin: 1em auto;
+}

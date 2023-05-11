@@ -1,0 +1,43 @@
+.row-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  label {
+    margin-right: 50px;
+    width: 280px;
+    margin-left: 3px;
+    
+  }
+  .title h1:before {
+    left:-20px;
+  
+  }
+  .title h1:after {
+    right:-20px;
+  }
+  /* ------- Helper Styles -------------*/
+  .validation-error{
+    color:red
+   }
+  .title{
+   position: relative;
+   text-align: center;
+   width: 90%;
+   max-width: 500px;
+   padding: 1em;
+   margin:auto;
+   margin-top: 0%;
+  
+   
+  }
+  .Ajoute{
+  // position: relative;
+  text-align: end;
+  width: 100%;
+  //max-width: 200px;
+  padding: 1em;
+  margin: 1em auto;
+  }

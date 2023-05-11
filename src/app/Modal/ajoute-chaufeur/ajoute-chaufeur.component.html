@@ -1,0 +1,66 @@
+
+<div class="container-fluid">
+  
+  <div  style="background-color: rgb(236, 237, 237);height: 100px;">
+    <h1  class="title" style="font-size: xx-large;width: 400px; ">  Ajouter  Chaufeur</h1>
+    </div>
+    <div style="border-bottom:1px solid  #bb0502;width: 21cm;margin-bottom: 10px;" >
+    </div>
+  <form  [formGroup]="FormChaufeur" >
+  
+    <div class="row-container">
+      <label class="col-sm-4" for="input1" style="width: 110px;"> Nom </label>
+      <input type="text" class="form-control" formControlName="nom" id="nom" name="nom" style="font-size: medium;" [(ngModel)]="chaufeur.nom" >
+    
+      <label class="col-sm-4 " for="input2" style="margin-left: 20px;width: 110px;"> Prenom </label>
+      <input type="text"  class="form-control" formControlName="prenom"  id="prenom" name="prenom"style="font-size: medium;"
+      [(ngModel)]="chaufeur.prenom">
+    
+     
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-2 "> </div>
+        <div class="col-md-4" style="margin-left: 40px;"><span class="  validation-error" style="margin-right: 0px;" *ngIf="(formSubmitted) && FormChaufeur.controls.nom.errors?.required">vous devez remplir le champ</span></div>
+       
+       
+      <div class="col-sm-4" style="margin-left: 88px;"> <span class="  validation-error" *ngIf="(formSubmitted) && FormChaufeur.controls.prenom.errors?.required">vous devez remplir le champ</span></div>
+      
+    </div>
+  </div>
+    <div><br><br></div>
+    <div class="row-container">
+      <label class="col-sm-4" for="input4" style="width: 110px;">Matricule</label>
+      <input type="text" class="form-control" formControlName="matricule" id="matricule" name="matricule"  style="font-size: medium;"
+      [(ngModel)]="chaufeur.matricule" >
+    
+      <label class="col-sm-4 " for="input5" style="margin-left: 20px;width: 110px;">Telephone</label>
+      <input type="text"  class="form-control" formControlName="telephone" id="telephone" name="telephone" style="font-size: medium;"
+      [(ngModel)]="chaufeur.telephone" appOnlyNumber  (keypress)="onInputChange($event)" pattern="[0-9]{9}" maxlength="9"(keyup)="onInputChange($event)">
+    
+      
+    </div>
+   
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-2 "> </div>
+      <div class="col-md-4" style="margin-left: 40px;"><span class="  validation-error" style="margin-right: 0px;" *ngIf="(formSubmitted) && FormChaufeur.controls.matricule.errors?.required">vous devez remplir le champ</span></div>
+     
+     
+    <div class="col-sm-4" style="margin-left: 88px;"> <span class="  validation-error" *ngIf="(formSubmitted) && FormChaufeur.controls.telephone.errors?.required">vous devez remplir le champ</span></div>
+    
+  </div> </div>
+    <div><br><br></div>
+    
+    
+      
+  </form>
+  <div   class=" d-flex align-items-end justify-content-end"
+  style="border-top:1px solid  #bb0502;margin-top: 10px;">
+    <Button class="btn btn-lg" style="color: white;background: linear-gradient(to bottom,#FB404B 0%,#bb0502 100%);margin-top: 10px;width: 100px;height: 40px;font-size: medium;" (click)="userRegisterlistchaufeur()" > Ajouter </Button>
+    <Button class="btn btn-lg" style="margin-top: 10px;color: white; margin-left: 10px;background: linear-gradient(to bottom,#FB404B 0%,#bb0502 100%);width: 100px;height: 40px;font-size: medium;" (click)="closedialog()"> Fermer </Button>
+  
+  
+  </div>
+  </div>
+  

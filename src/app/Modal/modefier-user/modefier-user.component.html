@@ -1,0 +1,74 @@
+
+<div class="container-fluid">
+  <div  style="background-color: rgb(236, 237, 237);height: 100px;">
+    <h1  class="title" style="font-size: xx-large;width: 400px; ">  Modifier  Utilisateurs</h1>
+    </div>
+    <div style="border-bottom:1px solid  #bb0502;width: 21cm;margin-bottom: 10px;" >
+    </div>
+ <form [formGroup]="loginForm" >
+ 
+   <div class="row">
+     <label class="col-sm-4" for="input1" style="width: 100px;margin-top: 5px;" > Nom </label>
+     <input type="text" class="form-control" id="username"  formControlName="username" name="username" style="width: 240px;font-size: medium;"[(ngModel)]="Utilisateurs.username"  >
+   
+     <label class="col-sm-4 " for="input2" style="width: 100px;margin-left: 10px;margin-top: 5px;" > Prenom </label>
+     <input type="text"  class="form-control" id="prenom" formControlName="prenom"  name="prenom"  style="width: 240px;font-size: medium;"[(ngModel)]="Utilisateurs.prenom">
+   
+    
+   </div>
+   <div class="container">
+    <div class="row">
+      <div class="col-sm-2 "> </div>
+      <div class="col-md-4" style="margin-left: 40px;"><span class="  validation-error" style="margin-right: 0px;" *ngIf="(formSubmitted) && loginForm.controls.username.errors?.required">vous devez remplir le champ</span></div>
+     
+     
+    <div class="col-sm-4" style="margin-left: 88px;"> <span class="  validation-error" *ngIf="(formSubmitted) && loginForm.controls.prenom.errors?.required">vous devez remplir le champ</span></div>
+    
+  </div> </div>
+   <div><br><br></div>
+   <div class="row">
+     <label class="col-sm-4" for="input4" style="width: 100px;margin-top: 5px;"  >Mot Passe</label>
+     <input type="password" class="form-control" id="password" formControlName="password"  name="password" style="width: 240px;font-size: medium;"
+     [(ngModel)]="Utilisateurs.password">
+   
+     <label class="col-sm-4 " for="input5"  style="width: 100px;margin-left: 10px;margin-top: 5px;">Email</label>
+     <input type="text" class="form-control" id="email" formControlName="email"  name="email"style="width: 240px;font-size: medium;"
+     [(ngModel)]="Utilisateurs.email" >
+
+   </div>
+
+   <div class="container">
+    <div class="row">
+      <div class="col-sm-2 "> </div>
+      <div class="col-md-4" style="margin-left: 40px;"><span class="  validation-error" style="margin-right: 0px;" *ngIf="(formSubmitted) && loginForm.controls.password.errors?.required">vous devez remplir le champ</span></div>
+     
+     
+    <div class="col-sm-4" style="margin-left: 88px;"> <span class="  validation-error" *ngIf="(formSubmitted) && loginForm.controls.email.errors?.required">vous devez remplir le champ</span></div>
+    
+  </div> </div>
+   <div><br><br></div>
+   <div class="row">
+    <label class="col-sm-4" for="input4" style="width: 100px;margin-top: 5px;"  >Role</label>
+    <select class="form-select" name="appRole" style="width: 275px;height: 40px;color: black;font-size: medium;"
+    id="appRole" value="fiche"  formControlName="appRole"   placeholder=""[(ngModel)]="Utilisateurs.appRole.id" (change)="roleChange($event)">
+      <option selected disabled> Role </option>
+      <option class="ecrituerModal"  *ngFor="let listrole of appRole" [value]="listrole.id"  >  
+        {{listrole.roleName}}
+                                
+      </option>
+    </select>  
+   
+
+   
+    
+  </div>
+  
+ </form>
+ <div   class=" d-flex align-items-end justify-content-end"
+ style="border-top:1px solid  #bb0502;margin-top: 10px;">
+   <Button class="btn btn-lg" style="color:white;background: linear-gradient(to bottom,#FB404B 0%,#bb0502 100%);margin-top: 10px;width: 100px;height: 40px;font-size: medium;" (click)="modefierUtilisateur()"> Modifier </Button>
+   <Button class="btn btn-lg" style="margin-top: 10px;color: white; margin-left: 10px;background: linear-gradient(to bottom,#FB404B 0%,#bb0502 100%);width: 100px;height: 40px;font-size: medium;" (click)="closedialog()"> Fermer </Button>
+ 
+ 
+ </div>
+ </div>
