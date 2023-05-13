@@ -287,7 +287,7 @@ export class ModefierLivraisonComponent implements OnInit {
      this.formSubmitted=true
       console.log("tojsoo"+JSON.stringify(this.FicheLivraison))
 
-         this.livraisonservice.modefierlistlivraison(this.FicheLivraison,this.recievedID.id).subscribe(
+         this.livraisonservice.modefierlistlivraison(this.FicheLivraison,this.recievedID.id,this.recievedID.fileid).subscribe(
            {
 
                next :(daa:any )=>{
