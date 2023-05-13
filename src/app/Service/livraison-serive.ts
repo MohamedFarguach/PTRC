@@ -25,7 +25,7 @@ export class LivraisonSerive {
         return this.httpclient.get(this.apiUrl+'GetLigneLivraison')
 
       }
-      modefierlistlivraison(da: any,id:any): Observable<any> {
+    modefierlistlivraison(da: any,id:any,fileid:any): Observable<any> {
         console.log("da"+JSON.stringify(da))
         const headers = new HttpHeaders()
         .set('Content-Type', 'application/json')
@@ -33,7 +33,7 @@ export class LivraisonSerive {
         .set('Access-Control-Allow-Origin','*')
         .set('Access-Control-Allow-Methods','GET, POST, PUT, DELETE, OPTIONS');
 
-        return this.httpclient.put<any>(this.apiUrl+'PutLigneLivraison/'+id, da,{ headers });
+        return this.httpclient.put<any>(this.apiUrl+'PutLigneLivraison/'+id+'/file/'+fileid, da,{ headers });
       }
       FindByIdlivraison(id:any):Observable<any>{
         return this.httpclient.get(this.apiUrl+'affichelivraison/'+id)
